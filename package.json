@@ -1,0 +1,19 @@
+{
+  "name": "agentic-trading-games",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Locally hosted classroom game-theory and trading laboratory",
+  "type": "module",
+  "scripts": {
+    "start": "node --no-warnings=ExperimentalWarning src/server.js",
+    "dev": "node --no-warnings=ExperimentalWarning --watch src/server.js",
+    "test": "node --import ./scripts/test-encryption-env.js --no-warnings=ExperimentalWarning --test --test-concurrency=1",
+    "audit:public-key": "node scripts/audit-public-key.mjs",
+    "verify:audit": "node scripts/verify-audit.mjs",
+    "check": "node --check src/server.js && node --check src/platform.js && node --check src/games.js && node --check src/db.js && node --check public/app.js && node --check public/instructor.js && node --check scripts/audit-public-key.mjs && node --check scripts/migrate-database-encryption.mjs && node --check scripts/verify-audit.mjs && node --check packaging/windows-portable/app-data.mjs && node --check packaging/windows-portable/launcher.mjs && node --check packaging/windows-portable/stop-demo.mjs && node --check packaging/windows-portable/build-release.mjs",
+    "package:windows": "node packaging/windows-portable/build-release.mjs"
+  },
+  "engines": {
+    "node": ">=22.23.3 <23"
+  }
+}

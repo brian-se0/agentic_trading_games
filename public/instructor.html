@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="csrf-token" content="__CSRF_TOKEN__">
+  <title>Instructor — Agentic Trading Games</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="shell wide">
+    <header class="topbar">
+      <div class="left">
+        <span class="brandline brand-ink">Agentic Trading Games</span>
+        <span class="kicker">Instructor</span>
+      </div>
+      <span id="conn" class="conn off"><span class="dot off"></span>Connecting…</span>
+    </header>
+    <main id="view" tabindex="-1"></main>
+  </div>
+
+  <dialog id="projector" aria-modal="true" aria-labelledby="projector-title">
+    <div class="projector-dialog-surface" data-dialog-surface tabindex="-1">
+      <div class="frame"></div>
+      <button class="pclose" id="projector-close">Close ✕</button>
+      <div class="inner">
+        <div class="pbrand" id="projector-title">Agentic Trading Games</div>
+        <div class="stack gap-10 items-center">
+          <div class="purl-label">On your phone or laptop, go to</div>
+          <div class="purl" id="projector-url"></div>
+        </div>
+        <div class="stack gap-6 items-center">
+          <div class="pcode-label">Class code</div>
+          <div class="pcode" id="projector-code"></div>
+          <div class="purl-label">Also use the personal invitation sent to you.</div>
+        </div>
+        <div class="pcount"><span class="dot dot-lg"></span><span><b id="projector-count">0</b> students in</span></div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="cancel-dialog" class="confirm-dialog" aria-labelledby="cancel-dialog-title" aria-describedby="cancel-dialog-description">
+    <form id="cancel-form" class="cancel-dialog-card" data-dialog-surface tabindex="-1">
+      <div class="stack gap-6">
+        <span class="kicker" id="cancel-dialog-kicker">Cancellation</span>
+        <h2 class="serif" id="cancel-dialog-title">Cancel this activity?</h2>
+        <p class="muted" id="cancel-dialog-description"></p>
+      </div>
+      <label class="field" id="cancel-note-field" for="cancel-note">
+        <span>Reason</span>
+        <input class="input" id="cancel-note" name="note" maxlength="40" autocomplete="off" required>
+      </label>
+      <p id="cancel-dialog-error" class="cancel-dialog-error" role="alert" hidden></p>
+      <div class="row cancel-dialog-actions">
+        <button class="btn quiet" type="button" id="cancel-dialog-close">Keep playing</button>
+        <button class="btn red-solid" type="submit" id="cancel-dialog-confirm">Cancel activity</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" role="alert"></div>
+  <script type="module" src="/instructor.js"></script>
+</body>
+</html>

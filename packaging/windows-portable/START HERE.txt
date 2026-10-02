@@ -1,0 +1,90 @@
+AGENTIC TRADING GAMES - START HERE
+==================================
+
+This release is for 64-bit Windows 10 or Windows 11. Node.js, npm, and a
+database do not need to be installed.
+
+VERIFY THE RELEASE FIRST
+------------------------
+
+Use only the original ZIP distributed with its matching .sha256 file and GitHub
+provenance attestation. The release process verifies the official Node.js
+checksum and Authenticode signature and inventories every packaged file.
+
+Before the ZIP is provided to an instructor, institutional IT or the publisher
+must verify its SHA-256 checksum and run:
+
+  gh attestation verify path-to-release.zip --repo brian-se0/agentic_trading_games ^
+    --signer-workflow brian-se0/agentic_trading_games/.github/workflows/release-windows.yml ^
+    --deny-self-hosted-runners --source-ref refs/tags/vX.Y.Z
+
+If either check fails, or Windows displays a security warning, stop and obtain a
+verified release. Do not bypass a Windows security warning.
+
+BEFORE CLASS
+------------
+
+Campus IT must first provision one approved private classroom interface, one
+trusted HTTPS hostname/certificate, and a source-network boundary. Set these
+Windows environment variables for the instructor account:
+
+  ATG_STUDENT_HOST          exact RFC1918 address of the classroom interface
+  ATG_STUDENT_ALLOWED_CIDR  approved private student subnet, such as /24
+  ATG_STUDENT_PUBLIC_ORIGIN canonical HTTPS origin, including the port
+  ATG_STUDENT_PORT          student HTTPS port (default 3000)
+  ATG_INSTRUCTOR_PORT       loopback-only instructor port (default 3001)
+  ATG_TLS_KEY_PATH          absolute path to the ACL-protected PEM private key
+  ATG_TLS_CERT_PATH         absolute path to the PEM certificate and chain
+
+The HTTPS origin's port must match ATG_STUDENT_PORT. The certificate must be
+trusted by Windows and every student device. The launcher fails closed if this
+configuration is absent, uses a wildcard/public interface, crosses a private
+network boundary, or does not match the canonical origin.
+
+1. Right-click the verified ZIP and choose Extract All.
+2. Keep the complete extracted folder together.
+3. Double-click START_DEMO.bat.
+4. Keep the black demo window open.
+5. Confirm the instructor page and a student test device work on the approved
+   classroom network before students arrive.
+
+The first start creates an encryption key protected by Windows DPAPI for the
+current Windows user. The encrypted classroom database and protected key are
+stored under:
+
+  %LOCALAPPDATA%\Agentic Trading Games
+
+They are never stored in the extracted application folder or release ZIP.
+The launcher also writes this installation's non-secret audit verification key
+to `%LOCALAPPDATA%\Agentic Trading Games\keys\trusted-audit-public-key.pem` and
+prints its fingerprint. Campus IT must pin that key/fingerprint before class;
+never trust a public key obtained only from the later audit export.
+
+RUN AND STOP
+------------
+
+Wait for DEMO READY, then use the one-time instructor bootstrap page printed in
+the black window. The instructor service is bound only to 127.0.0.1. Use only
+the canonical HTTPS student address shown by the application and approved by
+campus IT.
+
+At the end of class, double-click STOP_DEMO.bat and wait for confirmation that
+the database was saved. Do not close or power off the instructor computer while
+the application is saving.
+
+DATA PROTECTION
+---------------
+
+The database contains encrypted student identities, decisions, private game
+state, and results. Windows DPAPI ties the database key to this Windows account.
+Back up or transfer classroom data only through the application's authorized
+instructor export. Copying the SQLite file alone is neither a usable backup nor
+an authorized export.
+
+Follow the institution's retention schedule. The default operational target is
+to purge terminal sessions after 30 days unless a documented academic-record
+rule requires a different period.
+
+If START_DEMO reports an error, stop and send the complete message to the
+publisher or campus IT. Do not substitute commands, disable security controls,
+or run an unsigned copy.

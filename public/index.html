@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Agentic Trading Games</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main id="screen" tabindex="-1"></main>
+  <dialog id="student-confirm-dialog" class="confirm-dialog" aria-labelledby="student-confirm-title" aria-describedby="student-confirm-description">
+    <form id="student-confirm-form" class="cancel-dialog-card" data-dialog-surface tabindex="-1">
+      <div class="stack gap-6">
+        <span class="kicker">Please confirm</span>
+        <h2 class="serif" id="student-confirm-title">Switch students?</h2>
+        <p class="muted" id="student-confirm-description">Ask your professor for a new personal invitation to return.</p>
+      </div>
+      <div class="row cancel-dialog-actions">
+        <button class="btn quiet" type="button" id="student-confirm-close">Stay here</button>
+        <button class="btn red-solid" type="submit" id="student-confirm-submit">Switch student</button>
+      </div>
+    </form>
+  </dialog>
+  <div id="toast" role="alert"></div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

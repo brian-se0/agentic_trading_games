@@ -1,0 +1,12 @@
+node_modules/
+data/
+coverage/
+release/
+*.log
+.DS_Store
+._*
+WimbledonAER.pdf
+Bloomer Grant Proposal -- MCKEEVER.pdf
+deliverables/*.zip
+deliverables/*.sha256
+deliverables/*.sha256.txt

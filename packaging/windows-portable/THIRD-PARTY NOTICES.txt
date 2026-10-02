@@ -1,0 +1,12 @@
+THIRD-PARTY NOTICES
+===================
+
+This distribution includes:
+
+1. Node.js v22.23.3 for Windows x64
+   Copyright Node.js contributors.
+   License and bundled-component notices: runtime\LICENSE.txt
+   Project website: https://nodejs.org/
+
+The Agentic Trading Games application remains subject to the terms selected by
+its project owner. This notice does not replace the included license texts.
